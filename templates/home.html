@@ -1,6 +1,3 @@
-{% extends 'base.html' %}
-
-{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,66 +24,68 @@
     }
 
     .buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
       width: 90%; /* Match the width of .message-box */
       max-width: 600px; /* Adjust max-width as needed */
       background-color: #ffffff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
-      padding: 20px;
+      padding: 30px; /* Increased padding to make it bigger */
       margin: 20px;
     }
 
     .buttons h3 {
       text-align: center;
       margin: 0;
-      padding-bottom: 10px;
+      padding-bottom: 20px; /* Increased padding between heading and inputs */
       color: #4a90e2;
+      font-size: 1.5rem; /* Larger font size for the heading */
     }
 
     .buttons label {
       font-weight: bold;
+      margin-bottom: 10px; /* Added margin below labels */
+      display: block;
     }
 
     .buttons input[type="text"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px; /* Increased padding inside input boxes */
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-top: 5px;
       box-sizing: border-box;
       outline: none;
+      font-size: 1rem; /* Slightly increased font size for inputs */
     }
 
     .join {
       display: flex;
       flex-direction: row;
-      width: 100%;
+      align-items: center; /* Center align items vertically */
+      margin-top: 20px; /* Added margin above join button */
     }
 
     .join input[type="text"] {
       flex-grow: 1;
-      padding: 10px;
+      padding: 12px; /* Increased padding inside input boxes */
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-right: 10px;
       box-sizing: border-box;
       outline: none;
+      font-size: 1rem; /* Slightly increased font size for inputs */
     }
 
     .join button {
       background-color: #4a90e2;
       color: #ffffff;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 20px; /* Increased padding inside buttons */
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
       outline: none;
+      font-size: 1rem; /* Slightly increased font size for buttons */
     }
 
     .join button:hover {
@@ -97,13 +96,14 @@
       background-color: #4a90e2;
       color: #ffffff;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 20px; /* Increased padding inside buttons */
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
       outline: none;
       width: 100%;
       max-width: 200px;
+      font-size: 1rem; /* Slightly increased font size for buttons */
     }
 
     .create-btn:hover {
@@ -122,16 +122,25 @@
   <form method="post" class="buttons">
     <h3>Enter The Chat Room</h3>
     <div>
-      <label>Name:</label>
+      <label for="name">Name:</label>
       <input
         type="text"
-        placeholder="Pick a name!"
+        id="name"
+        placeholder="Enter your name"
         name="name"
         value="{{name}}"
+        required
       />
     </div>
     <div class="join">
-      <input type="text" placeholder="Room Code" name="code" value="{{code}}" />
+      <input
+        type="text"
+        id="code"
+        placeholder="Enter room code"
+        name="code"
+        value="{{code}}"
+        
+      />
       <button type="submit" name="join">Join a Room</button>
     </div>
     <button type="submit" name="create" class="create-btn">Create a Room</button>
@@ -143,4 +152,3 @@
   </form>
 </body>
 </html>
-{% endblock %}
