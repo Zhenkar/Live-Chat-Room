@@ -1,24 +1,146 @@
-{% extends 'base.html' %} {% block content %}
-<form method="post" class="buttons">
-  <h3>Enter The Chat Room</h3>
-  <div>
-    <label>Name:</label>
-    <input
-      type="text"
-      placeholder="Pick a name!"
-      name="name"
-      value="{{name}}"
-    />
-  </div>
-  <div class="join">
-    <input type="text" placeholder="Room Code" name="code" value="{{code}}" />
-    <button type="submit" name="join">Join a Room</button>
-  </div>
-  <button type="submit" name="create" class="create-btn">Create a Room</button>
-  {% if error %}
-  <ul>
-    <li>{{error}}</li>
-  </ul>
-  {% endif %}
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Room</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7f9fc; /* Fallback for older browsers */
+      animation: changeBackground 5s ease infinite alternate; /* Color changing animation */
+    }
+
+    @keyframes changeBackground {
+      0% { background-color: #a1c4fd; }
+      50% { background-color: #c2e9fb; }
+      100% { background-color: #a1c4fd; }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 90%; /* Match the width of .message-box */
+      max-width: 600px; /* Adjust max-width as needed */
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    .buttons h3 {
+      text-align: center;
+      margin: 0;
+      padding-bottom: 10px;
+      color: #4a90e2;
+    }
+
+    .buttons label {
+      font-weight: bold;
+    }
+
+    .buttons input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .join {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .join input[type="text"] {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .join button {
+      background-color: #4a90e2;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      outline: none;
+    }
+
+    .join button:hover {
+      background-color: #357ab8;
+    }
+
+    .create-btn {
+      background-color: #4a90e2;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      outline: none;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .create-btn:hover {
+      background-color: #357ab8;
+    }
+
+    .buttons ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" class="buttons">
+    <h3>Enter The Chat Room</h3>
+    <div>
+      <label>Name:</label>
+      <input
+        type="text"
+        placeholder="Pick a name!"
+        name="name"
+        value="{{name}}"
+      />
+    </div>
+    <div class="join">
+      <input type="text" placeholder="Room Code" name="code" value="{{code}}" />
+      <button type="submit" name="join">Join a Room</button>
+    </div>
+    <button type="submit" name="create" class="create-btn">Create a Room</button>
+    {% if error %}
+    <ul>
+      <li>{{error}}</li>
+    </ul>
+    {% endif %}
+  </form>
+</body>
+</html>
 {% endblock %}
