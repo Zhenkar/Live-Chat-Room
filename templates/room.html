@@ -112,6 +112,7 @@
         placeholder="Message"
         name="message"
         id="message"
+        onkeypress="handleKeyPress(event)"
       />
       <button type="button" name="send" id="send-btn" onClick="sendMessage()">
         Send
@@ -146,6 +147,12 @@
       if (message.value == "") return;
       socketio.emit("message", { data: message.value });
       message.value = "";
+    };
+
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        sendMessage();
+      }
     };
   </script>
   {% for msg in messages %}
