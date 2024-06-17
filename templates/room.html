@@ -27,9 +27,8 @@
     }
 
     .message-box {
-      width: 80%;
+      width: 90%;
       max-width: 800px;
-      min-width: 900px;
       margin: 20px;
       background-color: #ffffff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -56,11 +55,11 @@
 
     .messages .text {
       margin-bottom: 10px;
-      margin-right: 40px;
-      padding: 20px;
+      padding: 15px;
       background-color: #ffffff;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      word-wrap: break-word;
     }
 
     .messages .text .muted {
@@ -99,6 +98,21 @@
     .inputs button:hover {
       background-color: #357ab8;
     }
+
+    @media (max-width: 600px) {
+      .messages .text {
+        padding: 10px;
+        margin-right: 0;
+      }
+
+      .inputs input[type="text"] {
+        padding: 8px;
+      }
+
+      .inputs button {
+        padding: 8px 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -108,7 +122,6 @@
     <div class="inputs">
       <input
         type="text"
-        rows="3"
         placeholder="Message"
         name="message"
         id="message"
